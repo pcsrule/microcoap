@@ -166,6 +166,8 @@ void coap_option_nibble(uint32_t value, uint8_t *nibble);
 void coap_setup(void);
 void endpoint_setup(void);
 
+void coap_task(void * pvParams);
+
 #ifdef __cplusplus
 }
 #endif
