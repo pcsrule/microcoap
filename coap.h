@@ -10,6 +10,7 @@ extern "C" {
 #include <stddef.h>
 
 #define MAXOPT 16
+#define MAX_ENDPOINTS 10
 
 //http://tools.ietf.org/html/rfc7252#section-3
 typedef struct
@@ -108,6 +109,10 @@ typedef enum
     COAP_CONTENTTYPE_NONE = -1, // bodge to allow us not to send option block
     COAP_CONTENTTYPE_TEXT_PLAIN = 0,
     COAP_CONTENTTYPE_APPLICATION_LINKFORMAT = 40,
+    COAP_CONTENTTYPE_APPLICATION_XML = 41,
+    COAP_CONTENTTYPE_APPLICATION_OCTECT_STREAM = 42,
+    COAP_CONTENTTYPE_APPLICATION_EXI = 47,
+    COAP_CONTENTTYPE_APPLICATION_JSON = 50,
 } coap_content_type_t;
 
 ///////////////////////
@@ -164,8 +169,8 @@ int coap_make_response(coap_rw_buffer_t *scratch, coap_packet_t *pkt, const uint
 int coap_handle_req(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt);
 void coap_option_nibble(uint32_t value, uint8_t *nibble);
 void coap_setup(void);
-void endpoint_setup(void);
 
+int add_endpoint(coap_endpoint_t *new_endpoint);
 void coap_task(void * pvParams);
 
 #ifdef __cplusplus

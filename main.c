@@ -39,7 +39,7 @@ void coap_task(void * pvParams)
 #endif /* IPV6 */
     bind(fd,(struct sockaddr *)&servaddr, sizeof(servaddr));
 
-    endpoint_setup();
+    coap_setup();
 
     while(1)
     {
