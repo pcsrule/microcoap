@@ -406,6 +406,7 @@ static int handle_get_well_known_core(coap_rw_buffer_t *scratch,
 /* end /.well_known */
 
 void build_rsp(void) {
+	rsp[0] = '\0';
 	uint16_t len = RSPLEN;
 	const coap_endpoint_t *ep = endpoints;
 	int i;
@@ -442,7 +443,6 @@ void build_rsp(void) {
 
 		ep++;
 	}
-
 }
 
 int add_endpoint(coap_endpoint_t *new_endpoint) {
